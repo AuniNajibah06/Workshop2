@@ -1,0 +1,230 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    height: 100vh; 
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+.brand-name {
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    text-align: center; /* Ensure text alignment is centered */
+    height: 20vh; /* Adjust height to your preference */
+    font-size: 14px; /* Adjust font size as needed */
+    font-weight: bold;
+}
+
+h1{
+    color: grey;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+h2{
+    color: black;
+}
+h4{
+    color:#666;
+    font-size: 19px;
+    margin-bottom: 5px;
+}
+h5{
+    color:black;
+    font-size: 26px;
+    margin-top: 10px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.profile h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.profile p {
+    font-size: 14px;
+    color: #666;
+}
+
+.side-menu {
+    position: fixed;
+    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    width: 19vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-menu .brand-menu {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.side-menu li{
+    font-size: 24px;
+    padding: 10px 30px;
+    color: black;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    text-decoration: none; 
+    background-color: transparent; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.side-menu li:hover a{
+    color: grey;
+}
+
+.side-menu li.active a{
+    color: white; /* Text color for active state */
+    font-weight: lighter; /* Make it bold to emphasize */
+}
+
+/* Style for the dropdown container */
+li {
+    position: relative;
+}
+
+/* Hide dropdown content by default */
+.dropdown {
+    display: none;
+    position: absolute;
+    left: 20;
+    top: 100%; /* Ensures dropdown appears below the Assets button */
+    background-color: #ffffff;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+/* Dropdown links styling */
+.dropdown a {
+    color: #242424;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+/* Show dropdown on hover */
+li:hover .dropdown {
+    display: block;
+}
+
+/* Hover effect for dropdown links */
+.dropdown a:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.container{
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    left: 19vw;
+    width: calc(100% - 19vw);
+    height: 100%;
+    background-color: rgb(236, 234, 234);
+    min-height: 100vh;
+}
+
+.container .content .cards{
+    padding: 30px 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container .content .cards .card{
+    width: 220px;
+    height: 150px;
+    background: white;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container_account{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 19vw;
+    width: calc(100% - 19vw);
+    height: 90%;
+    background-color: rgb(236, 234, 234);
+    min-height: 100vh;
+}
+
+.account-info {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    padding: 100px;
+    text-align: center;
+}
+
+.account-info h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.account-info p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.account-info p strong {
+    color: #222;
+}
+
+.account-info::after {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 80px;
+    background-color: #6c63ff;
+    margin: 30px auto 0;
+    border-radius: 8px;
+}

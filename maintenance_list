@@ -19,10 +19,23 @@ function isActive($page) {
     return $currentPage === $page ? 'active' : '';
 }
 
+//Modify query based on sort
+$sortColumn = "MaintenanceID";
+$order = "ASC";
+
+if (isset($_GET['sort_by'])) {
+    $sortColumn = $conn1->real_escape_string($_GET['sort_by']);
+}
+
+if (isset($_GET['order']) && $_GET['order'] === "DESC") {
+    $order = "DESC";
+}
+
 // Fetch all maintenance records
 $query_all = "SELECT m.MaintenanceID, m.StaffID, m.RequestorID, m.AssetID, m.MaintenanceDate, m.MaintenanceType, m.Details, m.Cost, m.Status, s.Department_Name
         FROM Maintenance m
-        JOIN staff s ON m.StaffID = s.StaffID";
+        JOIN staff s ON m.StaffID = s.StaffID
+        ORDER BY $sortColumn $order";
 $result_all = $conn1->query($query_all);
 
 // Fetch pending maintenance records
@@ -287,6 +300,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['search_maintenance'])
         <!-- Maintenance Records Section -->
         <div class="table-container">
             <h3>Search Maintenance</h3>
+           
             <form method="POST">
                 <label for="maintenanceSearch">Asset ID/ Staff ID:</label>
                 <input type="text" id="maintenanceSearch" name="maintenanceSearch" placeholder="Search Maintenance" required>
@@ -381,7 +395,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['search_maintenance'])
         <!-- All Maintenance Section -->
         <div class="table-container" id="printableArea">
             <h3>All Maintenance Records</h3>
-            
+
+            <form method="GET">
+                <label for="sort_by">Sort by:</label>
+                <select id="sort_by" name="sort_by">
+                    <option value="MaintenanceID" <?php echo $sortColumn === "MaintenanceID" ? "selected" : ""; ?>>MaintenanceID</option>
+                    <option value="MaintenanceType" <?php echo $sortColumn === "MaintenanceType" ? "selected" : ""; ?>>MaintenanceType</option>
+                    <option value="MaintenanceDate" <?php echo $sortColumn === "MaintenanceDate" ? "selected" : ""; ?>>MaintenanceDate</option>
+                    <option value="Status" <?php echo $sortColumn === "Status" ? "selected" : ""; ?>>Status</option>
+                </select>
+                <label>
+                    <input type="radio" name="order" value="ASC" <?php echo $order === "ASC" ? "checked" : ""; ?>> Ascending
+                </label>
+                <label>
+                    <input type="radio" name="order" value="DESC" <?php echo $order === "DESC" ? "checked" : ""; ?>> Descending
+                </label>
+                <button type="submit">Sort</button>
+            </form>
+
             <table>
                 <thead>
                     <tr>
